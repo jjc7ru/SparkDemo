@@ -13,7 +13,8 @@ object AppMain extends SparkSessionWrapper {
     spark.sparkContext.setLogLevel("ERROR")
 
     println("Reading from csv file")
-    val df = reader.csv("/Users/jasonchoi/Documents/Data_for_application_testing/SparkDemo/Clean-Ecommerce.csv")
+    val df = reader.csv("Clean-Ecommerce.csv")
+    //val df = reader.csv("/Users/jasonchoi/Documents/Data_for_application_testing/SparkDemo/Clean-Ecommerce.csv")
     //val df = reader.csv("C:\\Users\\35928\\Documents\\mySparkDemo\\Data\\Clean-Ecommerce.csv")
     //val df = reader.csv("/home/ubuntu/SampleData/Clean-Ecommerce.csv")
 

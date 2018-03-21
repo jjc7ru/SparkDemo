@@ -15,20 +15,4 @@ libraryDependencies ++= {
 }
 
 enablePlugins(DockerPlugin)
-
-assemblyMergeStrategy in assembly := {
-  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-  case x => MergeStrategy.first
-}
-
-dockerfile in docker := {
-  // The assembly task generates a fat JAR file
-  val artifact: File = assembly.value
-  val artifactTargetPath = s"/app/${artifact.name}"
-
-  new Dockerfile {
-    from("openjdk:8-jre")
-    add(artifact, artifactTargetPath)
-    entryPoint("java", "-jar", artifactTargetPath)
-  }
-}
+enablePlugins(JavaServerAppPackaging)
